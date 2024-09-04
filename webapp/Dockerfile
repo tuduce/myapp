@@ -1,4 +1,4 @@
-FROM busybox
-ADD src/. /www/
-EXPOSE 8080
-CMD httpd -p 8080 -h /www; tail -f /dev/null
+FROM nginx:alpine
+COPY ./src/ /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
