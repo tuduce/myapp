@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stress
+  namespace: benchmark
+spec:
+  containers:
+  - args:
+    - -cpus
+    - "1"
+    - -mem-total
+    - 350Mi
+    - -mem-alloc-size
+    - 100Mi
+    - -mem-alloc-sleep
+    - 5s
+    image: vish/stress
+    name: stress
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "100Mi"
+      limits:
+        cpu: "1"
+        memory: "300Mi"
+  
