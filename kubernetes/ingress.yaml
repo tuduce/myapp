@@ -4,11 +4,21 @@ metadata:
   name: myapp
   namespace: myapp
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   ingressClassName: "nginx"
   rules:
   - host: web04.go4clouds.net
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: myapp
+            port: 
+              number: 8080
+  - host: lfs04.go4clouds.net
     http:
       paths:
       - pathType: Prefix
@@ -28,4 +38,5 @@ spec:
   tls:
     - hosts:
       - web04.go4clouds.net
+      - lfs04.go4clouds.net
       secretName: web-go4clouds-net-tls
