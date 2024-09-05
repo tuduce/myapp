@@ -2,9 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: myapp
-  labels:
-    name: myapp
+  namespace: myapp
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
+  ingressClassName: "nginx"
   rules:
   - host: web04.go4clouds.net
     http:
@@ -16,3 +18,14 @@ spec:
             name: myapp
             port: 
               number: 8080
+      - path: /v2
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-world2
+            port:
+              number: 8080
+  tls:
+    - hosts:
+      - web04.go4clouds.net
+      secretName: web-go4clouds-net-tls
