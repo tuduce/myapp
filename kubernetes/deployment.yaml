@@ -3,10 +3,6 @@ kind: Deployment
 metadata:
   name: myapp
   namespace: myapp
-  labels:
-    app.kubernetes.io/managed-by: Helm
-    meta.helm.sh/release-name: gitmyapp-kubernetes
-    meta.helm.sh/release-namespace: myapp
 spec:
   strategy: {} 
   replicas: 3
