@@ -7,3 +7,6 @@ Deployment:
 Autoscaler:
   maxReplicas: 6
   minReplicas: 1
+
+Ingress:
+  host: web04.go4clouds.net
