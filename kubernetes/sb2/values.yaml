@@ -1,0 +1,5 @@
+Deployment:
+  replicaNumber: 3
+  image:
+    name: "ghcr.io/tuduce/myapp"
+    tag: ""

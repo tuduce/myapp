@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # golang template module
+  name: {{ .Release.Name }}
+spec:
+  strategy: {} 
+  replicas: {{ .Values.Deployment.replicaNumber }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - image: {{ .Values.Deployment.image.name }}:{{ .Chart.AppVersion }}
+        name: {{ .Release.Name }}
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+              path: /
+              port: http
+          failureThreshold: 1
+          initialDelaySeconds: 3
+          periodSeconds: 5
+
