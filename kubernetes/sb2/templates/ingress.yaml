@@ -16,14 +16,14 @@ spec:
           service:
             name: {{ .Release.Name }}
             port: 
-              number: 8080
+              number: {{ .Values.Service.servicePort }}
       - path: /v2
         pathType: Prefix
         backend:
           service:
             name: hello-world2
             port:
-              number: 8080
+              number: {{ .Values.Service.servicePort }}
   tls:
     - hosts:
       - web04.go4clouds.net

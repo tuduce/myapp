@@ -4,9 +4,9 @@ metadata:
   name: {{ .Release.Name }}
 spec:
   ports:
-  - port: 8080
+  - port: {{ .Values.Service.servicePort }}
     protocol: TCP
-    targetPort: 80
+    targetPort: {{ .Values.Service.appPort }}
   selector:
     app: {{ .Release.Name }}
   type: ClusterIP

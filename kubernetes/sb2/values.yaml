@@ -1,3 +1,7 @@
+Service:
+  appPort: 80
+  servicePort: 8080
+
 Deployment:
   replicaNumber: 3
   image:

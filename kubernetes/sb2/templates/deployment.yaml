@@ -23,7 +23,7 @@ spec:
             cpu: "500m"
         ports:
         - name: http
-          containerPort: 80
+          containerPort: {{ .Values.Service.appPort }}
           protocol: TCP
         livenessProbe:
           httpGet:
