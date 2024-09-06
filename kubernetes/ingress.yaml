@@ -18,16 +18,6 @@ spec:
             name: myapp
             port: 
               number: 8080
-  - host: lfs04.go4clouds.net
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: myapp
-            port: 
-              number: 8080
       - path: /v2
         pathType: Prefix
         backend:
@@ -38,5 +28,4 @@ spec:
   tls:
     - hosts:
       - web04.go4clouds.net
-      - lfs04.go4clouds.net
       secretName: web-go4clouds-net-tls
