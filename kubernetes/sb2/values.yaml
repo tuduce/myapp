@@ -3,3 +3,7 @@ Deployment:
   image:
     name: "ghcr.io/tuduce/myapp"
     tag: ""
+
+Autoscaler:
+  maxReplicas: 6
+  minReplicas: 1

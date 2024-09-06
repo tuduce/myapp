@@ -3,8 +3,8 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Release.Name }}
 spec:
-  maxReplicas: 9
-  minReplicas: 1
+  maxReplicas: {{ .Values.Autoscaler.maxReplicas }}
+  minReplicas: {{ .Values.Autoscaler.minReplicas }}
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
