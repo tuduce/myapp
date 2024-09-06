@@ -5,7 +5,7 @@ metadata:
   namespace: myapp
 spec:
   strategy: {} 
-  replicas: 12
+  replicas: 3
   selector:
     matchLabels:
       app: myapp
@@ -20,7 +20,7 @@ spec:
         resources:
           limits:
             memory: "128Mi"
-            cpu: "250m"
+            cpu: "500m"
         ports:
         - name: http
           containerPort: 80
